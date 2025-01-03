@@ -1,0 +1,3 @@
+1. src/analysis/run_regression.py的输出格式可以更好一点
+2. src/preprocessing/conditional_checking.py可以只用来封装，再写一个新文件用来call
+3. src/preprocessing/conditional_checking.py换个命名

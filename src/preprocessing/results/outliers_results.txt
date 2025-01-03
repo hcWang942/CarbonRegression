@@ -1,0 +1,16 @@
+Outlier Analysis Results:
+
+Scope1:
+Number of outliers: 0
+
+TA:
+Number of outliers: 0
+
+TL:
+Number of outliers: 0
+
+PPE:
+Number of outliers: 0
+
+SOxEmission:
+Number of outliers: 0
