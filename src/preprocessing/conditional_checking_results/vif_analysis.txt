@@ -1,0 +1,28 @@
+
+VIF Analysis - Iteration 1:
+         Variable        VIF  High_Multicollinearity   Status
+0              TA  11.456196                    True  Current
+1             PPE   9.539497                    True  Current
+2             ROE   2.005139                   False  Current
+3              TL   4.933881                   False  Current
+4       Inflation   1.724123                   False  Current
+5  TotalWater Use   1.472097                   False  Current
+6     SOxEmission   1.220204                   False  Current
+
+VIF Analysis - Iteration 2:
+         Variable       VIF  High_Multicollinearity   Status
+0             PPE  4.389774                   False  Current
+1             ROE  1.777942                   False  Current
+2              TL  4.460717                   False  Current
+3       Inflation  1.706377                   False  Current
+4  TotalWater Use  1.302416                   False  Current
+5     SOxEmission  1.203247                   False  Current
+
+Multicollinearity Analysis:
+         Variable       VIF  High_Multicollinearity   Status
+0             PPE  4.389774                   False  Current
+1             ROE  1.777942                   False  Current
+2              TL  4.460717                   False  Current
+3       Inflation  1.706377                   False  Current
+4  TotalWater Use  1.302416                   False  Current
+5     SOxEmission  1.203247                   False  Current

@@ -1,0 +1,29 @@
+
+=== Lasso Regression Results ===
+Best alpha: 0.0498
+
+=== Model Parameters ===
++----------------+-------------+
+|    Feature     | Coefficient |
++----------------+-------------+
+|   Intercept    |   0.0213    |
+|       TA       |   0.2654    |
+|      PPE       |   0.0620    |
+|      ROE       |   -0.0659   |
+|       TL       |   0.0660    |
+| TotalWater Use |   -0.0000   |
+|  SOxEmission   |   0.3786    |
++----------------+-------------+
+
+=== Model Metrics ===
++-----------+--------+
+|  Metric   | Value  |
++-----------+--------+
+| train_r2  | 0.4421 |
+|  test_r2  | 0.3902 |
+| train_mse | 0.4888 |
+| test_mse  | 0.7011 |
+|   rmse    | 0.8373 |
+|    mae    | 0.6413 |
+|  adj_r2   | 0.2913 |
++-----------+--------+

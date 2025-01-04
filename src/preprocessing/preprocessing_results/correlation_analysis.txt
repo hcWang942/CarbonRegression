@@ -1,0 +1,16 @@
+Correlation Analysis Results
+===========================
+
+Correlation threshold: 0.3
+Number of significant variables: 7
+
+Significant correlations with Scope 1:
+         Variable  Correlation_with_Scope1
+0          Scope1                 1.000000
+1              TA                 0.505225
+4              TL                 0.484284
+2             PPE                 0.441031
+7     SOxEmission                 0.394882
+6  TotalWater Use                 0.328194
+3             ROE                -0.322282
+5       Inflation                -0.478412

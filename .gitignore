@@ -1,3 +1,5 @@
 .DS_Store
-
--delete1_selected.xlsx
+-scope1_selected.xlsx
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
