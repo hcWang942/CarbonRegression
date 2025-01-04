@@ -1,3 +1,4 @@
+# regression_diagnostics.py
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,10 +14,10 @@ import os
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
-Conditional_Checking_DIR = os.path.join(PROJECT_ROOT, 'src', 'preprocessing')
+RESULTS_DIR = os.path.join(PROJECT_ROOT, 'src', 'preprocessing', 'results')
 
 class RegressionDiagnostics:
-    def __init__(self, data, output_dir='.'):
+    def __init__(self, data, output_dir=RESULTS_DIR):
         self.data = data
         self.output_dir = output_dir
         self.dependent_var = self.data.columns[0]
@@ -134,7 +135,7 @@ class RegressionDiagnostics:
             else:
                 mode = 'a'
                 
-            with open(os.path.join(output_dir, 'vif_analysis.txt'), mode) as f:
+            with open(os.path.join(self.output_dir, 'vif_analysis.txt'), mode) as f:
                 f.write(f"\nVIF Analysis - Iteration {iteration}:\n")
                 f.write(results_df.to_string())
                 f.write("\n")
@@ -278,42 +279,3 @@ class RegressionDiagnostics:
             self.save_test_results(output_dir)
         
         return results
-
-if __name__ == "__main__":
-    file_path = 'data/delete1_selected.xlsx'
-    original_df = pd.read_excel(file_path)
-    df_transformed = transform_data(original_df)
-    
-    diagnostics = RegressionDiagnostics(df_transformed)
-    output_dir = os.path.join(Conditional_Checking_DIR, 'results')
-    
-    results = diagnostics.run_all_diagnostics(
-        save_plots=True,
-        save_results=True,
-        output_dir=output_dir
-    )
-    
-    print("\nDiagnostic Results Summary:")
-    print("\nDurbin-Watson Test:")
-    print(f"Statistic: {results['durbin_watson']['statistic']:.4f}")
-    print(f"Interpretation: {results['durbin_watson']['interpretation']}")
-    
-    print("\nNormality Tests:")
-    print(results['normality'])
-    
-    print("\nLevene's Tests:")
-    print(results['levene_test'])
-    
-    print("\nT-Tests:")
-    print(results['ttest'])
-    
-    print("\nMulticollinearity Analysis:")
-    print(results['multicollinearity'])
-    
-    print("\nOutlier Analysis:")
-    for var, outliers in results['outliers'].items():
-        print(f"\n{var}:")
-        print(f"Number of outliers: {len(outliers)}")
-        if len(outliers) > 0:
-            print("Outlier values:")
-            print(outliers.values)

@@ -1,0 +1,19 @@
+
+VIF Analysis - Iteration 1:
+      Variable       VIF  High_Multicollinearity   Status
+0           TA  8.330012                    True  Current
+1           TL  4.814648                   False  Current
+2          PPE  8.234703                    True  Current
+3  SOxEmission  1.071487                   False  Current
+
+VIF Analysis - Iteration 2:
+      Variable       VIF  High_Multicollinearity   Status
+0           TL  4.183545                   False  Current
+1          PPE  4.220482                   False  Current
+2  SOxEmission  1.018594                   False  Current
+
+Multicollinearity Analysis:
+      Variable       VIF  High_Multicollinearity   Status
+0           TL  4.183545                   False  Current
+1          PPE  4.220482                   False  Current
+2  SOxEmission  1.018594                   False  Current
