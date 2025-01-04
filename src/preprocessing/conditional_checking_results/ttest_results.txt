@@ -1,0 +1,30 @@
+T-Test Results:
+                              Statistic   P-value Significantly_Different
+Scope1 vs TA                        0.0       1.0                   False
+Scope1 vs PPE                       0.0       1.0                   False
+Scope1 vs ROE                 -0.000011  0.999991                   False
+Scope1 vs TL                        0.0       1.0                   False
+Scope1 vs Inflation            0.038623  0.969227                   False
+Scope1 vs TotalWater Use            0.0       1.0                   False
+Scope1 vs SOxEmission              -0.0       1.0                   False
+TA vs PPE                           0.0       1.0                   False
+TA vs ROE                     -0.000011  0.999991                   False
+TA vs TL                           -0.0       1.0                   False
+TA vs Inflation                0.038623  0.969227                   False
+TA vs TotalWater Use                0.0       1.0                   False
+TA vs SOxEmission                  -0.0       1.0                   False
+PPE vs ROE                    -0.000011  0.999991                   False
+PPE vs TL                          -0.0       1.0                   False
+PPE vs Inflation               0.038623  0.969227                   False
+PPE vs TotalWater Use              -0.0       1.0                   False
+PPE vs SOxEmission                 -0.0       1.0                   False
+ROE vs TL                      0.000011  0.999991                   False
+ROE vs Inflation               0.038635  0.969217                   False
+ROE vs TotalWater Use          0.000011  0.999991                   False
+ROE vs SOxEmission             0.000011  0.999991                   False
+TL vs Inflation                0.038623  0.969227                   False
+TL vs TotalWater Use                0.0       1.0                   False
+TL vs SOxEmission                  -0.0       1.0                   False
+Inflation vs TotalWater Use   -0.038623  0.969227                   False
+Inflation vs SOxEmission      -0.038623  0.969227                   False
+TotalWater Use vs SOxEmission      -0.0       1.0                   False

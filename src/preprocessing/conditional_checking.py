@@ -1,4 +1,3 @@
-# regression_diagnostics.py
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -130,7 +129,7 @@ class RegressionDiagnostics:
             results_df = pd.DataFrame(results)
             vif_history.append(results_df)
             
-            if iteration == 1:  # Only open in write mode for first iteration
+            if iteration == 1: 
                 mode = 'w'
             else:
                 mode = 'a'
@@ -144,7 +143,6 @@ class RegressionDiagnostics:
             print(results_df)
             
             if max_vif <= 5:
-                # Save final results
                 with open(os.path.join(self.output_dir, 'vif_analysis.txt'), 'a') as f:
                     f.write("\nMulticollinearity Analysis:\n")
                     f.write(results_df.to_string())
@@ -221,30 +219,23 @@ class RegressionDiagnostics:
 
     def save_test_results(self, output_dir='.'):
         os.makedirs(output_dir, exist_ok=True)
-        
-        # Save Shapiro-Wilk test results
         with open(os.path.join(output_dir, 'shapiro_results.txt'), 'w') as f:
             f.write("Normality Test Results:\n")
             f.write(self.check_normality().to_string())
-            
-        # Save Levene test results
         with open(os.path.join(output_dir, 'levene_results.txt'), 'w') as f:
             f.write("Levene's Test Results:\n")
             f.write(self.levene_homogeneity_test().to_string())
             
-        # Save t-test results
         with open(os.path.join(output_dir, 'ttest_results.txt'), 'w') as f:
             f.write("T-Test Results:\n")
             f.write(self.independent_ttest().to_string())
             
-        # Save Durbin-Watson results
         with open(os.path.join(output_dir, 'durbin_watson_results.txt'), 'w') as f:
             dw_results = self.durbin_watson_test()
             f.write("Durbin-Watson Test Results:\n")
             f.write(f"Statistic: {dw_results['statistic']:.4f}\n")
             f.write(f"Interpretation: {dw_results['interpretation']}")
             
-        # Save outliers results
         with open(os.path.join(output_dir, 'outliers_results.txt'), 'w') as f:
             f.write("Outlier Analysis Results:\n")
             for column in self.data.columns:

@@ -1,0 +1,3 @@
+Durbin-Watson Test Results:
+Statistic: 2.2261
+Interpretation: No significant autocorrelation detected

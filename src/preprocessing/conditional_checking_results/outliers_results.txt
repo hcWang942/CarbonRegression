@@ -6,10 +6,19 @@ Number of outliers: 0
 TA:
 Number of outliers: 0
 
+PPE:
+Number of outliers: 0
+
+ROE:
+Number of outliers: 0
+
 TL:
 Number of outliers: 0
 
-PPE:
+Inflation:
+Number of outliers: 0
+
+TotalWater Use:
 Number of outliers: 0
 
 SOxEmission:

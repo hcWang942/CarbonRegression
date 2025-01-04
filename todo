@@ -1,3 +1,10 @@
-1. src/analysis/run_regression.py的输出格式可以更好一点
-2. src/preprocessing/conditional_checking.py可以只用来封装，再写一个新文件用来call
-3. src/preprocessing/conditional_checking.py换个命名
+24-12-24
+1.(done)写成typeclass style吧
+2.(done)函数封装和运行分开
+3.(done)加一个result的保存功能
+
+25-01-04
+1. (done)src/analysis/run_regression.py的输出格式可以更好一点
+2. (done)src/preprocessing/conditional_checking.py可以只用来封装，再写一个新文件用来call
+3. (done)src/preprocessing/conditional_checking.py换个命名
+4. (done)加入original data

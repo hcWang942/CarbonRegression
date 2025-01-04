@@ -1,0 +1,10 @@
+Normality Test Results:
+               Statistic   P-value Is_Normal
+Scope1          0.999592       1.0      True
+TA              0.999592       1.0      True
+PPE             0.999592       1.0      True
+ROE             0.999583       1.0      True
+TL              0.999592       1.0      True
+Inflation       0.904636  0.000001     False
+TotalWater Use  0.999592       1.0      True
+SOxEmission     0.999592       1.0      True

@@ -37,7 +37,7 @@ def evaluate_model(model, X_train, X_test, y_train, y_test, model_name):
     return model, y_test_pred, metrics, coefficients
 
 class RegressionModels:
-    def __init__(self, data, target_col, test_size=0.3, random_state=42):
+    def __init__(self, data, target_col, test_size=0.4, random_state=42):
         self.Y = data[target_col]
         self.X = data.drop(columns=[target_col])
         self.scaler = StandardScaler()
