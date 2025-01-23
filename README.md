@@ -54,7 +54,7 @@ CARBON-EMISSION-REGRESSION/
   - Missing value handling
 
 - **Statistical Diagnostics**:
-  - Comprehensive Conditioanl Checking:
+  - Comprehensive Conditional Checking:
     * Durbin-Watson test for autocorrelation
     * Shapiro-Wilk test for normality
     * VIF analysis for multicollinearity
@@ -107,7 +107,7 @@ python src/analysis/run_regression.py
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/CARBON-EMISSION-REGRESSION.git
+git clone https://github.com/hcWang942/CARBON-EMISSION-REGRESSION.git
 cd CARBON-EMISSION-REGRESSION
 pip install -r requirements.txt
 ```
@@ -118,7 +118,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
 ## Citation
 
