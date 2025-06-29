@@ -1,0 +1,31 @@
+
+=== ElasticNet Regression Results ===
+Best alpha: 0.2205, Best l1_ratio: 0.10 0.2205
+
+=== Model Parameters ===
++----------------+-------------+
+|    Feature     | Coefficient |
++----------------+-------------+
+|   Intercept    |   0.0213    |
+|       TA       |   0.1690    |
+|      PPE       |   0.1071    |
+|      ROE       |   -0.0891   |
+|       TL       |   0.1048    |
+| TotalWater Use |   0.0000    |
+|  SOxEmission   |   0.3422    |
++----------------+-------------+
+
+=== Model Metrics ===
++---------------------+--------+
+|       Metric        | Value  |
++---------------------+--------+
+|      train_r2       | 0.4360 |
+|       test_r2       | 0.3845 |
+|      train_mse      | 0.4942 |
+|      test_mse       | 0.7076 |
+|        rmse         | 0.8412 |
+|         mae         | 0.6446 |
+|       adj_r2        | 0.2847 |
+| accuracy_within_20% | 13.64% |
+| accuracy_within_40% | 25.00% |
++---------------------+--------+

@@ -127,7 +127,7 @@ If you use this code in your research, please cite:
 ```bibtex
 @article{article,
   title={Article Title},
-  author={Wang Haocheng, Ma Qiyan, Phuang Zhen Xin, Ng Wai Lam, Woon Kok Sin},
+  author={Haocheng Wang, Qiyan Ma, Zhenxin Phuang, Wai Lam Ng, Kok Sin Woon},
   journal={Energy Economics},
   year={2025}
 }

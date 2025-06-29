@@ -1,0 +1,7 @@
+Variable,Skewness_Interpretation,Kurtosis_Interpretation,Normality_Interpretation
+TA,positively skewed (right tail),heavy-tailed (leptokurtic),significantly deviates from normal distribution
+Inflation,positively skewed (right tail),light-tailed (platykurtic),significantly deviates from normal distribution
+TL,positively skewed (right tail),normal peakedness,significantly deviates from normal distribution
+PPE,positively skewed (right tail),heavy-tailed (leptokurtic),significantly deviates from normal distribution
+SOxEmission,positively skewed (right tail),heavy-tailed (leptokurtic),significantly deviates from normal distribution
+ROE,negatively skewed (left tail),heavy-tailed (leptokurtic),significantly deviates from normal distribution

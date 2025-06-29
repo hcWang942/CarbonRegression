@@ -1,0 +1,29 @@
+
+=== Linear Regression Results ===
+
+=== Model Parameters ===
++----------------+-------------+
+|    Feature     | Coefficient |
++----------------+-------------+
+|   Intercept    |   0.0213    |
+|      PPE       |   0.2810    |
+|      ROE       |   -0.1259   |
+|       TL       |   0.1365    |
+| TotalWater Use |   -0.0202   |
+|  SOxEmission   |   0.4597    |
++----------------+-------------+
+
+=== Model Metrics ===
++---------------------+--------+
+|       Metric        | Value  |
++---------------------+--------+
+|      train_r2       | 0.4437 |
+|       test_r2       | 0.3685 |
+|      train_mse      | 0.4874 |
+|      test_mse       | 0.7260 |
+|        rmse         | 0.8521 |
+|         mae         | 0.6547 |
+|       adj_r2        | 0.2854 |
+| accuracy_within_20% | 13.64% |
+| accuracy_within_40% | 31.82% |
++---------------------+--------+
