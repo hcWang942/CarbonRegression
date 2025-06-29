@@ -1,0 +1,146 @@
+=====================================================
+  COMPREHENSIVE REGRESSION ANALYSIS RESULTS
+  Generated on: 2025-04-13 17:36:06
+=====================================================
+
+
+==================================================
+LINEAR REGRESSION RESULTS
+==================================================
+Dataset: scope1_regression1.xlsx
+Target variable: Scope1
+Number of features: 5
+Number of samples: 108
+
+
+=== Linear Regression Results ===
+
+=== Model Parameters ===
++----------------+-------------+
+|    Feature     | Coefficient |
++----------------+-------------+
+|   Intercept    |   0.0213    |
+|      PPE       |   0.2810    |
+|      ROE       |   -0.1259   |
+|       TL       |   0.1365    |
+| TotalWater Use |   -0.0202   |
+|  SOxEmission   |   0.4597    |
++----------------+-------------+
+
+=== Model Metrics ===
++---------------------+--------+
+|       Metric        | Value  |
++---------------------+--------+
+|      train_r2       | 0.4437 |
+|       test_r2       | 0.3685 |
+|      train_mse      | 0.4874 |
+|      test_mse       | 0.7260 |
+|        rmse         | 0.8521 |
+|         mae         | 0.6547 |
+|       adj_r2        | 0.2854 |
+| accuracy_within_20% | 13.64% |
+| accuracy_within_40% | 31.82% |
++---------------------+--------+
+
+==================================================
+RIDGE REGRESSION RESULTS
+==================================================
+Dataset: scope1_regression2.xlsx
+Target variable: Scope1
+Number of features: 6
+Number of samples: 108
+
+
+=== Ridge Regression Results ===
+Best alpha: 15.1991
+
+=== Model Parameters ===
++----------------+-------------+
+|    Feature     | Coefficient |
++----------------+-------------+
+|   Intercept    |   0.0213    |
+|       TA       |   0.1629    |
+|      PPE       |   0.1177    |
+|      ROE       |   -0.0980   |
+|       TL       |   0.1115    |
+| TotalWater Use |   0.0116    |
+|  SOxEmission   |   0.3466    |
++----------------+-------------+
+
+=== Model Metrics ===
++---------------------+--------+
+|       Metric        | Value  |
++---------------------+--------+
+|      train_r2       | 0.4385 |
+|       test_r2       | 0.3894 |
+|      train_mse      | 0.4920 |
+|      test_mse       | 0.7020 |
+|        rmse         | 0.8378 |
+|         mae         | 0.6424 |
+|       adj_r2        | 0.2707 |
+| accuracy_within_20% | 13.64% |
+| accuracy_within_40% | 27.27% |
++---------------------+--------+
+
+==================================================
+LASSO REGRESSION RESULTS
+==================================================
+
+=== Lasso Regression Results ===
+Best alpha: 0.0498
+
+=== Model Parameters ===
++----------------+-------------+
+|    Feature     | Coefficient |
++----------------+-------------+
+|   Intercept    |   0.0213    |
+|       TA       |   0.2654    |
+|      PPE       |   0.0620    |
+|      ROE       |   -0.0659   |
+|       TL       |   0.0660    |
+| TotalWater Use |   -0.0000   |
+|  SOxEmission   |   0.3786    |
++----------------+-------------+
+
+=== Model Metrics ===
++---------------------+--------+
+|       Metric        | Value  |
++---------------------+--------+
+|      train_r2       | 0.4421 |
+|       test_r2       | 0.3902 |
+|      train_mse      | 0.4888 |
+|      test_mse       | 0.7011 |
+|        rmse         | 0.8373 |
+|         mae         | 0.6413 |
+|       adj_r2        | 0.2913 |
+| accuracy_within_20% | 13.64% |
+| accuracy_within_40% | 22.73% |
++---------------------+--------+
+
+==================================================
+MODEL COMPARISON
+==================================================
+Comparison plots have been generated in the 'plots' directory:
+- Model accuracy comparisons
+- R² and adjusted R² comparisons
+- Error metrics (RMSE and MAE) comparisons
+- Combined prediction plots
+
+==================================================
+SUMMARY OF ALL MODELS
+==================================================
++--------+------------+--------+---------+--------+-----------------+-----------------+
+| Model  | Best Alpha |   R²   | Adj. R² |  RMSE  | Accuracy (±20%) | Accuracy (±40%) |
++--------+------------+--------+---------+--------+-----------------+-----------------+
+| Linear |    N/A     | 0.3902 | 0.2913  | 0.8373 |     13.64%      |     22.73%      |
+| Ridge  |  15.1991   | 0.3894 | 0.2707  | 0.8378 |     13.64%      |     27.27%      |
+| Lasso  |   0.0498   | 0.3902 | 0.2913  | 0.8373 |     13.64%      |     22.73%      |
++--------+------------+--------+---------+--------+-----------------+-----------------+
+
+
+CONCLUSION:
+- Best model based on adjusted R²: Linear
+- Best model based on RMSE: Linear
+- Best model based on accuracy within ±20%: Linear
+
+Overall recommendation: Linear regression appears to be the most suitable model for this dataset.

@@ -1,0 +1,201 @@
+=====================================================
+  COMPREHENSIVE REGRESSION ANALYSIS RESULTS
+  Generated on: 2025-04-13 17:14:05
+=====================================================
+
+
+==================================================
+LINEAR REGRESSION RESULTS
+==================================================
+Dataset: scope1_regression1.xlsx
+Target variable: Scope1
+Number of features: 5
+Number of samples: 108
+
+
+=== Linear Regression Results ===
+
+=== Model Parameters ===
++----------------+-------------+
+|    Feature     | Coefficient |
++----------------+-------------+
+|   Intercept    |   0.0213    |
+|      PPE       |   0.2810    |
+|      ROE       |   -0.1259   |
+|       TL       |   0.1365    |
+| TotalWater Use |   -0.0202   |
+|  SOxEmission   |   0.4597    |
++----------------+-------------+
+
+=== Model Metrics ===
++---------------------+--------+
+|       Metric        | Value  |
++---------------------+--------+
+|      train_r2       | 0.4437 |
+|       test_r2       | 0.3685 |
+|      train_mse      | 0.4874 |
+|      test_mse       | 0.7260 |
+|        rmse         | 0.8521 |
+|         mae         | 0.6547 |
+|       adj_r2        | 0.2854 |
+| accuracy_within_20% | 13.64% |
+| accuracy_within_40% | 31.82% |
++---------------------+--------+
+
+==================================================
+RIDGE REGRESSION RESULTS
+==================================================
+Dataset: scope1_regression2.xlsx
+Target variable: Scope1
+Number of features: 6
+Number of samples: 108
+
+
+=== Ridge Regression Results ===
+Best alpha: 15.1672
+
+=== Model Parameters ===
++----------------+-------------+
+|    Feature     | Coefficient |
++----------------+-------------+
+|   Intercept    |   0.0213    |
+|       TA       |   0.1630    |
+|      PPE       |   0.1177    |
+|      ROE       |   -0.0980   |
+|       TL       |   0.1114    |
+| TotalWater Use |   0.0116    |
+|  SOxEmission   |   0.3467    |
++----------------+-------------+
+
+=== Model Metrics ===
++---------------------+--------+
+|       Metric        | Value  |
++---------------------+--------+
+|      train_r2       | 0.4385 |
+|       test_r2       | 0.3894 |
+|      train_mse      | 0.4919 |
+|      test_mse       | 0.7020 |
+|        rmse         | 0.8378 |
+|         mae         | 0.6424 |
+|       adj_r2        | 0.2707 |
+| accuracy_within_20% | 13.64% |
+| accuracy_within_40% | 27.27% |
++---------------------+--------+
+
+==================================================
+LASSO REGRESSION RESULTS
+==================================================
+
+=== Lasso Regression Results ===
+Best alpha: 0.0523
+
+=== Model Parameters ===
++----------------+-------------+
+|    Feature     | Coefficient |
++----------------+-------------+
+|   Intercept    |   0.0213    |
+|       TA       |   0.2675    |
+|      PPE       |   0.0582    |
+|      ROE       |   -0.0642   |
+|       TL       |   0.0656    |
+| TotalWater Use |   -0.0000   |
+|  SOxEmission   |   0.3756    |
++----------------+-------------+
+
+=== Model Metrics ===
++---------------------+--------+
+|       Metric        | Value  |
++---------------------+--------+
+|      train_r2       | 0.4413 |
+|       test_r2       | 0.3901 |
+|      train_mse      | 0.4895 |
+|      test_mse       | 0.7012 |
+|        rmse         | 0.8374 |
+|         mae         | 0.6408 |
+|       adj_r2        | 0.2911 |
+| accuracy_within_20% | 13.64% |
+| accuracy_within_40% | 25.00% |
++---------------------+--------+
+
+==================================================
+ELASTIC NET REGRESSION RESULTS
+==================================================
+
+=== ElasticNet Regression Results ===
+Best alpha: 0.2205, Best l1_ratio: 0.10 0.2205
+
+=== Model Parameters ===
++----------------+-------------+
+|    Feature     | Coefficient |
++----------------+-------------+
+|   Intercept    |   0.0213    |
+|       TA       |   0.1690    |
+|      PPE       |   0.1071    |
+|      ROE       |   -0.0891   |
+|       TL       |   0.1048    |
+| TotalWater Use |   0.0000    |
+|  SOxEmission   |   0.3422    |
++----------------+-------------+
+
+=== Model Metrics ===
++---------------------+--------+
+|       Metric        | Value  |
++---------------------+--------+
+|      train_r2       | 0.4360 |
+|       test_r2       | 0.3845 |
+|      train_mse      | 0.4942 |
+|      test_mse       | 0.7076 |
+|        rmse         | 0.8412 |
+|         mae         | 0.6446 |
+|       adj_r2        | 0.2847 |
+| accuracy_within_20% | 13.64% |
+| accuracy_within_40% | 25.00% |
++---------------------+--------+
+
+==================================================
+CROSS-VALIDATION RESULTS
+==================================================
+Running 5-fold cross-validation on all models...
+
+Cross-validation completed. Results summary:
+
++-------------------------------------+------------------+--------------------+-----------------------------+-----------------------------+
+|                Model                | CV R² (mean±std) | CV RMSE (mean±std) | CV Accuracy ±20% (mean±std) | CV Accuracy ±40% (mean±std) |
++-------------------------------------+------------------+--------------------+-----------------------------+-----------------------------+
+|               Linear                |  0.2793±0.2168   |   0.8123±0.1450    |        11.99%±4.63%         |        24.03%±3.09%         |
+|          Ridge, α=30.3677           |  0.3296±0.1927   |   0.7853±0.1414    |        12.08%±7.67%         |        23.20%±8.39%         |
+|           Lasso, α=0.0523           |  0.3302±0.2092   |   0.7838±0.1476    |        11.99%±4.63%         |        27.75%±6.30%         |
+| ElasticNet, α=0.1097, l1_ratio=0.40 |  0.3286±0.2054   |   0.7851±0.1471    |        12.94%±5.42%         |        27.75%±6.30%         |
++-------------------------------------+------------------+--------------------+-----------------------------+-----------------------------+
+
+
+==================================================
+MODEL COMPARISON
+==================================================
+Comparison plots have been generated in the 'plots' directory:
+- Model accuracy comparisons
+- R² and adjusted R² comparisons
+- Error metrics (RMSE and MAE) comparisons
+- Combined prediction plots
+- Cross-validation performance comparisons
+
+==================================================
+SUMMARY OF ALL MODELS
+==================================================
++------------+------------------+--------+---------+--------+-----------------+-----------------+
+|   Model    |    Best Alpha    |   R²   | Adj. R² |  RMSE  | Accuracy (±20%) | Accuracy (±40%) |
++------------+------------------+--------+---------+--------+-----------------+-----------------+
+|   Linear   |       N/A        | 0.3685 | 0.2854  | 0.8521 |     13.64%      |     31.82%      |
+|   Ridge    |     15.1672      | 0.3894 | 0.2707  | 0.8378 |     13.64%      |     27.27%      |
+|   Lasso    |      0.0523      | 0.3901 | 0.2911  | 0.8374 |     13.64%      |     25.00%      |
+| ElasticNet | 0.2205 (l1=0.10) | 0.3845 | 0.2847  | 0.8412 |     13.64%      |     25.00%      |
++------------+------------------+--------+---------+--------+-----------------+-----------------+
+
+
+CONCLUSION:
+- Best model based on adjusted R²: Lasso
+- Best model based on RMSE: Lasso
+- Best model based on accuracy within ±20%: Linear
+- Best model based on cross-validation R²: Lasso
+
+Overall recommendation: Lasso regression appears to be the most suitable model for this dataset.

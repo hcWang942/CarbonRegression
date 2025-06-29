@@ -1,0 +1,27 @@
+Complete Correlation Analysis Results (All Variables)
+====================================================
+
+Total number of variables: 17
+Variables with |correlation| > 0.3: 5
+Variables with |correlation| <= 0.3: 12
+
+All correlations with Scope 1 (sorted by absolute value):
+                  Variable  Correlation_with_Scope1
+0                   Scope1                 1.000000
+1                       TA                 0.469766
+9                Inflation                -0.461811
+7                       TL                 0.449453
+3                      PPE                 0.408671
+12             SOxEmission                 0.407306
+11          TotalWater Use                 0.298116
+5                      ROE                -0.292962
+4                      ROA                -0.271430
+2                    CAPEX                 0.249729
+15    BoardGenderDiversity                -0.199659
+16  independentBoardMember                 0.159772
+6                     TDTA                 0.141887
+13   NumberOfBoardMeetings                -0.137320
+8                     TDTE                -0.108251
+14              board size                 0.085820
+10      RenewableEnergyUse                 0.049179
+17              CEOduality                -0.017813

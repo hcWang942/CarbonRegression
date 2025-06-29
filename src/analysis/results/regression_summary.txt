@@ -1,0 +1,22 @@
+# Feature Importance Comparison Across Regression Methods
+
+This analysis compares the feature importance (coefficients) from three regression methods:
+- Linear Regression (standard OLS)
+- LASSO Regression (L1 regularization)
+- Ridge Regression (L2 regularization)
+
+## Key Findings
+
+- Most important feature in Linear Regression: SOxEmission
+- Most important feature in LASSO Regression: SOxEmission
+- Most important feature in Ridge Regression: SOxEmission
+
+- LASSO eliminated the following features: TotalWater Use
+
+## Coefficient Consistency
+
+- TotalWater Use: Sign inconsistency across methods, suggesting instability
+- ROE: Consistently negative effect across all methods
+- TL: Consistently positive effect across all methods
+- PPE: Consistently positive effect across all methods
+- SOxEmission: Consistently positive effect across all methods
