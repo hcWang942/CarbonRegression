@@ -11,8 +11,8 @@ CARBON-EMISSION-REGRESSION/
 │   ├── scope1_original.xlsx      # Raw collected data
 │   ├── scope1_cleaned.xlsx       # Cleaned data with handling of missing values
 │   ├── scope1_selected.xlsx      # Features with correlation ≥ 0.3 with Scope 1
-│   ├── scope1_regression1.xlsx   # Dataset for MLR (passed conditional checks)
-│   └── scope1_regression2.xlsx   # Dataset for LASSO & Ridge regression
+│   ├── scope1_regression_mlr.xlsx   # Dataset for MLR (passed conditional checks)
+│   └── scope1_regression_LASSO_Ridge.xlsx   # Dataset for LASSO & Ridge regression
 │
 └── src/
     ├── preprocessing/
@@ -39,10 +39,10 @@ CARBON-EMISSION-REGRESSION/
    - Based on correlation analysis from preprocessing.py
 
 3. **Regression Datasets**:
-   - `scope1_regression1.xlsx`: For Multiple Linear Regression
+   - `scope1_regression_mlr.xlsx`: For Multiple Linear Regression
      * Passed all conditional checks and assumptions for classical linear regression
      * Carefully selected features based on comprehensive diagnostic tests
-   - `scope1_regression2.xlsx`: For Penalized Regression (LASSO and Ridge)
+   - `scope1_regression_LASSO_Ridge.xlsx`: For Penalized Regression (LASSO and Ridge)
      * Includes wider range of potential predictors
      * Suitable for regularization techniques that handle multicollinearity
      * Used when dealing with potential overfitting

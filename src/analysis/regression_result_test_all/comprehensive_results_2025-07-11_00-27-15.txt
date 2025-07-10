@@ -1,13 +1,13 @@
 =====================================================
   COMPREHENSIVE REGRESSION ANALYSIS RESULTS
-  Generated on: 2025-04-13 17:36:06
+  Generated on: 2025-07-11 00:27:15
 =====================================================
 
 
 ==================================================
 LINEAR REGRESSION RESULTS
 ==================================================
-Dataset: scope1_regression1.xlsx
+Dataset: scope1_regression_mlr.xlsx
 Target variable: Scope1
 Number of features: 5
 Number of samples: 108
@@ -45,7 +45,7 @@ Number of samples: 108
 ==================================================
 RIDGE REGRESSION RESULTS
 ==================================================
-Dataset: scope1_regression2.xlsx
+Dataset: scope1_regression_LASSO_Ridge.xlsx
 Target variable: Scope1
 Number of features: 6
 Number of samples: 108
