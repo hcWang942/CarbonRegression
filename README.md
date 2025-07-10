@@ -1,7 +1,7 @@
 # Carbon Emission Regression Analysis
 
 ## Overview
-This repository presents a comprehensive analysis framework aimed at exploring the relationship between Scope 1 carbon emissions and various socioeconomic indicators within the American Energy sector. Focusing on publicly - listed companies in the oil, gas, and energy sectors, the project utilizes statistical modeling techniques such as Multiple Linear Regression (MLR), Ridge Regression, and LASSO Regression to assess their environmental impact.
+This repository presents a comprehensive analysis framework aimed at exploring the relationship between Scope 1 carbon emissions and various socioeconomic indicators within the American Energy sector. Focusing on publicly-listed companies in the oil, gas, and energy sectors, the project utilizes statistical modeling techniques such as Multiple Linear Regression (MLR), Ridge Regression, and LASSO Regression to assess their environmental impact.
 
 ## Project Structure
 ```
@@ -15,19 +15,15 @@ CARBON-EMISSION-REGRESSION/
 │   └── scope1_regression_LASSO_Ridge.xlsx   # Dataset for LASSO & Ridge regression
 │
 └── src/
-    ├── preprocessing/
-    │   ├── data_transform.py           # Data cleaning and transformation
-    │   ├── conditional_checking.py      # Regression assumptions testing
-    │   ├── conditional_checking_functions.py # Functions for regression diagnostics
-    │   ├── preprocessing.py            # Correlation analysis
-    │   ├── run_diagnostics.py          # Main script for diagnostics
-    │   └── run_preprocess_analysis.py  # Script for preprocessing and correlation analysis
-    │
-    └── analysis/
-        ├── regression_models.py        # Implementation of regression models
-        ├── run_other_plots.py          # Script to generate additional comparison plots
-        ├── run_regression_all_result.py # Main script for comprehensive regression analysis
-        └── run_regression.py           # Main script for regression analysis
+    ├── analysis/
+    │   ├── regression_models.py        # Implementation of regression models
+    │   ├── run_other_plots.py          # Script to generate additional comparison plots
+    │   └── run_regression_all_result.py # Main script for comprehensive regression analysis
+    └── preprocessing/
+        ├── conditional_checking_functions.py # Functions for regression diagnostics
+        ├── data_transform_functions.py # Functions for data transformation
+        ├── run_diagnostics.py          # Main script for diagnostics
+        └── run_preprocess_analysis.py  # Script for preprocessing and correlation analysis
 ```
 
 ## Data Processing Pipeline
@@ -46,35 +42,35 @@ CARBON-EMISSION-REGRESSION/
 ## Key Features
 
 ### Data Transformation
-- **Rank - based Inverse Normal Transformation (RINT)**: Applied to make the data more suitable for regression analysis.
+- **Rank-based Inverse Normal Transformation (RINT)**: Applied to make the data more suitable for regression analysis.
 - **Missing Value Handling**: Ensures data integrity by dealing with missing values appropriately.
 
 ### Statistical Diagnostics
 - **Comprehensive Conditional Checking**
-    - **Durbin - Watson test**: Checks for autocorrelation in the residuals.
-    - **Shapiro - Wilk test**: Tests the normality of the data.
-    - **VIF analysis**: Assesses multicollinearity among the independent variables.
-    - **Levene's test**: Verifies the homoscedasticity of the data.
-    - **Independent t - tests**: Analyzes the relationships between variables.
-    - **Box plots and statistical tests**: Detect outliers in the data.
-    - **Partial regression plots**: Examine the linearity between variables.
+   -**Durbin-Watson test**: Checks for autocorrelation in the residuals.
+   -**Shapiro-Wilk test**: Tests the normality of the data.
+   -**VIF analysis**: Assesses multicollinearity among the independent variables.
+   -**Levene's test**: Verifies the homoscedasticity of the data.
+   -**Independent t-tests**: Analyzes the relationships between variables.
+   -**Box plots and statistical tests**: Detect outliers in the data.
+   -**Partial regression plots**: Examine the linearity between variables.
 - **Regression Analysis**
-    - **Correlation analysis**: Filters features based on a correlation threshold.
-    - **Cross - validation**: Validates the performance of the regression models.
-    - **Model comparison metrics**:
-        - **Adjusted R - squared**: Accounts for the number of predictors in the model.
-        - **Mean Squared Error (MSE)**: Measures the average of the squares of the errors.
-        - **Root Mean Squared Error (RMSE)**: The square root of the MSE, providing a measure of the average magnitude of the error.
-        - **Mean Absolute Error (MAE)**: Measures the average magnitude of the errors in a set of predictions.
+   -**Correlation analysis**: Filters features based on a correlation threshold.
+   -**Cross-validation**: Validates the performance of the regression models.
+   -**Model comparison metrics**:
+       -**Adjusted R-squared**: Accounts for the number of predictors in the model.
+       -**Mean Squared Error (MSE)**: Measures the average of the squares of the errors.
+       -**Root Mean Squared Error (RMSE)**: The square root of the MSE, providing a measure of the average magnitude of the error.
+       -**Mean Absolute Error (MAE)**: Measures the average magnitude of the errors in a set of predictions.
 - **Advanced Model Selection**
-    - **Stepwise variable selection**: Automatically selects the most relevant variables for the model.
-    - **Cross - validated alpha selection for Ridge and LASSO**: Chooses the optimal regularization parameter.
-    - **Feature importance analysis through coefficient paths**: Identifies the relative importance of each feature in the model.
+   -**Stepwise variable selection**: Automatically selects the most relevant variables for the model.
+   -**Cross-validated alpha selection for Ridge and LASSO**: Chooses the optimal regularization parameter.
+   -**Feature importance analysis through coefficient paths**: Identifies the relative importance of each feature in the model.
 
 ### Regression Models
 - **Multiple Linear Regression (MLR)**: A basic linear model that predicts the relationship between a dependent variable and multiple independent variables.
-- **Ridge Regression with cross - validation**: A regularized regression method that helps to reduce the impact of multicollinearity.
-- **LASSO Regression with cross - validation**: Another regularized regression method that can perform feature selection by shrinking some coefficients to zero.
+- **Ridge Regression with cross-validation**: A regularized regression method that helps to reduce the impact of multicollinearity.
+- **LASSO Regression with cross-validation**: Another regularized regression method that can perform feature selection by shrinking some coefficients to zero.
 
 ## Usage
 
@@ -88,7 +84,6 @@ python src/preprocessing/run_preprocess_analysis.py
 ```python
 python src/analysis/run_regression_all_result.py
 python src/analysis/run_other_plots.py
-python src/analysis/run_regression.py
 ```
 
 ## Dependencies
@@ -99,6 +94,9 @@ python src/analysis/run_regression.py
 - scipy
 - matplotlib
 - seaborn
+- tabulate
+- openpyxl
+- pathlib
 
 ## Installation
 ```bash
