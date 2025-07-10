@@ -77,9 +77,9 @@ def main():
         print(section_header)
         comprehensive_file.write(section_header)
         
-        df_mlr = load_and_transform_data('scope1_regression1.xlsx')
+        df_mlr = load_and_transform_data('scope1_regression_mlr.xlsx')
         target_col = df_mlr.columns[0]
-        comprehensive_file.write(f"Dataset: scope1_regression1.xlsx\n")
+        comprehensive_file.write(f"Dataset: scope1_regression_mlr.xlsx\n")
         comprehensive_file.write(f"Target variable: {target_col}\n")
         comprehensive_file.write(f"Number of features: {len(df_mlr.columns)-1}\n")
         comprehensive_file.write(f"Number of samples: {len(df_mlr)}\n\n")
@@ -97,9 +97,9 @@ def main():
         print(section_header)
         comprehensive_file.write(section_header)
         
-        df_penalized = load_and_transform_data('scope1_regression2.xlsx')
+        df_penalized = load_and_transform_data('scope1_regression_LASSO_Ridge.xlsx')
         target_col = df_penalized.columns[0]
-        comprehensive_file.write(f"Dataset: scope1_regression2.xlsx\n")
+        comprehensive_file.write(f"Dataset: scope1_regression_LASSO_Ridge.xlsx\n")
         comprehensive_file.write(f"Target variable: {target_col}\n")
         comprehensive_file.write(f"Number of features: {len(df_penalized.columns)-1}\n")
         comprehensive_file.write(f"Number of samples: {len(df_penalized)}\n\n")
