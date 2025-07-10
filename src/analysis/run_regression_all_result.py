@@ -16,7 +16,7 @@ warnings.filterwarnings('ignore')
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 DATA_DIR = os.path.join(PROJECT_ROOT, 'data')
-RESULTS_DIR = os.path.join(PROJECT_ROOT, 'src', 'analysis', 'regression_result_test_all')
+RESULTS_DIR = os.path.join(PROJECT_ROOT, 'src', 'analysis', 'results_regression_all')
 PLOTS_DIR = os.path.join(RESULTS_DIR, 'plots')
 
 def print_results(model_name, metrics, coefficients, best_alpha=None):
