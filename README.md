@@ -39,38 +39,44 @@ CARBON-EMISSION-REGRESSION/
 - `scope1_regression_mlr.xlsx`: Intended for Multiple Linear Regression. It has passed all the conditional checks and assumptions required for classical linear regression, with features carefully chosen through comprehensive diagnostic tests.
 - `scope1_regression_LASSO_Ridge.xlsx`: Used for Penalized Regression (LASSO and Ridge). It includes a wider range of potential predictors and is suitable for regularization techniques that handle multicollinearity, especially when dealing with potential overfitting.
 
-## Key Features
+### Key Features
+#### Data Transformation  
+- **Rank-based Inverse Normal Transformation (RINT)**:  
+  Applied to make the data more suitable for regression analysis.  
+- **Missing Value Handling**:  
+  Ensures data integrity by dealing with missing values appropriately.  
 
-### Data Transformation
-- **Rank-based Inverse Normal Transformation (RINT)**: Applied to make the data more suitable for regression analysis.
-- **Missing Value Handling**: Ensures data integrity by dealing with missing values appropriately.
+#### Assumption Testing  
+- **Comprehensive Conditional Checking**:  
+  - **Durbin-Watson test**: Checks for autocorrelation in the residuals.  
+  - **Shapiro-Wilk test**: Tests the normality of the data.  
+  - **VIF analysis**: Assesses multicollinearity among the independent variables.  
+  - **Levene's test**: Verifies the homoscedasticity of the data.  
+  - **Independent t-tests**: Analyzes the relationships between variables.  
+  - **Box plots and statistical tests**: Detect outliers in the data.  
+  - **Partial regression plots**: Examine the linearity between variables.  
 
-### Assumption Testing
-- **Comprehensive Conditional Checking**
-   -**Durbin-Watson test**: Checks for autocorrelation in the residuals.
-   -**Shapiro-Wilk test**: Tests the normality of the data.
-   -**VIF analysis**: Assesses multicollinearity among the independent variables.
-   -**Levene's test**: Verifies the homoscedasticity of the data.
-   -**Independent t-tests**: Analyzes the relationships between variables.
-   -**Box plots and statistical tests**: Detect outliers in the data.
-   -**Partial regression plots**: Examine the linearity between variables.
-- **Regression Analysis**
-   -**Correlation analysis**: Filters features based on a correlation threshold.
-   -**Cross-validation**: Validates the performance of the regression models.
-   -**Model comparison metrics**:
-       -**Adjusted R-squared**: Accounts for the number of predictors in the model.
-       -**Mean Squared Error (MSE)**: Measures the average of the squares of the errors.
-       -**Root Mean Squared Error (RMSE)**: The square root of the MSE, providing a measure of the average magnitude of the error.
-       -**Mean Absolute Error (MAE)**: Measures the average magnitude of the errors in a set of predictions.
-- **Advanced Model Selection**
-   -**Stepwise variable selection**: Automatically selects the most relevant variables for the model.
-   -**Cross-validated alpha selection for Ridge and LASSO**: Chooses the optimal regularization parameter.
-   -**Feature importance analysis through coefficient paths**: Identifies the relative importance of each feature in the model.
+#### Regression Analysis  
+- **Correlation analysis**: Filters features based on a correlation threshold.  
+- **Cross-validation**: Validates the performance of the regression models.  
+- **Model comparison metrics**:  
+  - **Adjusted R-squared**: Accounts for the number of predictors in the model.  
+  - **Mean Squared Error (MSE)**: Measures the average of the squares of the errors.  
+  - **Root Mean Squared Error (RMSE)**: The square root of the MSE, providing a measure of the average magnitude of the error.  
+  - **Mean Absolute Error (MAE)**: Measures the average magnitude of the errors in a set of predictions.  
 
-### Regression Models
-- **Multiple Linear Regression (MLR)**: A basic linear model that predicts the relationship between a dependent variable and multiple independent variables.
-- **Ridge Regression with cross-validation**: A regularized regression method that helps to reduce the impact of multicollinearity.
-- **LASSO Regression with cross-validation**: Another regularized regression method that can perform feature selection by shrinking some coefficients to zero.
+#### Advanced Model Selection  
+- **Stepwise variable selection**: Automatically selects the most relevant variables for the model.  
+- **Cross-validated alpha selection for Ridge and LASSO**: Chooses the optimal regularization parameter.  
+- **Feature importance analysis through coefficient paths**: Identifies the relative importance of each feature in the model.  
+
+#### Regression Models  
+- **Multiple Linear Regression (MLR)**:  
+  A basic linear model that predicts the relationship between a dependent variable and multiple independent variables.  
+- **Ridge Regression with cross-validation**:  
+  A regularized regression method that helps to reduce the impact of multicollinearity.  
+- **LASSO Regression with cross-validation**:  
+  Another regularized regression method that can perform feature selection by shrinking some coefficients to zero.  
 
 ## Usage
 
@@ -112,7 +118,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 This project is licensed under the MIT License.
 
 ## Authors
-Qiyan Ma<sup>a,1</sup>, Haocheng Wang<sup>b,1</sup>, Zhen Xin Phuang<sup>c,d</sup>, Wai Lam Ng<sup>c,d</sup>, Xiongfeng Pan<sup>e</sup>, Hua Shang<sup>e</sup>, Kok Sin Woon<sup>c,d,*</sup>  
+**Qiyan Ma<sup>a,1</sup>, Haocheng Wang<sup>b,1</sup>, Zhen Xin Phuang<sup>c,d</sup>, Wai Lam Ng<sup>c,d</sup>, Xiongfeng Pan<sup>e</sup>, Hua Shang<sup>e</sup>, Kok Sin Woon<sup>c,d,*</sup>**  
 <sup>a</sup> School of Economics and Management, Xiamen University Malaysia, Jalan Sunsuria, Bandar Sunsuria, 43900 Sepang, Selangor, Malaysia  
 <sup>b</sup> School of Mathematics and Physics, Xiamen University Malaysia, Jalan Sunsuria, Bandar Sunsuria, 43900 Sepang, Selangor, Malaysia  
 <sup>c</sup> School of Energy and Chemical Engineering, Department of New Energy Science and Engineering, Xiamen University Malaysia, Jalan Sunsuria, Bandar Sunsuria, 43900 Sepang, Selangor, Malaysia  
@@ -128,7 +134,7 @@ If you use this code in your research, please cite:
 ```bibtex
 @article{article,
   title={Predicting Corporate Emissions in the Oil and Gas Sector: A Comparative Regression Model Analysis using Environmental, Financial, and Governance Indicators},
-  author={Qiyan Ma, Haocheng Wang, Zhen Xin Phuang, Wai Lam Ng, Xiongfeng Pan, Hua Shang, Kok Sin Woon},
+  author={Qiyan Ma$^*$, Haocheng Wang$^*$, Zhen Xin Phuang, Wai Lam Ng, Xiongfeng Pan, Hua Shang, Kok Sin Woon},
   journal={Energy Economics},
   year={2025}
 }
