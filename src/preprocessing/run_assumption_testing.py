@@ -1,12 +1,12 @@
 import pandas as pd
-from conditional_checking_functions import RegressionDiagnostics
+from assumption_testing_functions import RegressionDiagnostics
 from data_transform_functions import transform_data
 import os
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 DATA_DIR = os.path.join(PROJECT_ROOT, 'data')
-RESULTS_DIR = os.path.join(PROJECT_ROOT, 'src', 'preprocessing', 'conditional_checking_results')
+RESULTS_DIR = os.path.join(PROJECT_ROOT, 'src', 'preprocessing', 'assumption_testing_results')
 
 def main():
     file_path = os.path.join(DATA_DIR, 'scope1_selected.xlsx')
