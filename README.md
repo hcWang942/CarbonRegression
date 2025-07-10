@@ -20,9 +20,9 @@ CARBON-EMISSION-REGRESSION/
     │   ├── run_other_plots.py          # Script to generate additional comparison plots
     │   └── run_regression_all_result.py # Main script for comprehensive regression analysis
     └── preprocessing/
-        ├── conditional_checking_functions.py # Functions for regression diagnostics
+        ├── assumption_testing_functions.py # Functions for regression assumption testing
         ├── data_transform_functions.py # Functions for data transformation
-        ├── run_diagnostics.py          # Main script for diagnostics
+        ├── run_assumption_testing.py          # Main script for assumption testing
         └── run_preprocess_analysis.py  # Script for preprocessing and correlation analysis
 ```
 
@@ -45,7 +45,7 @@ CARBON-EMISSION-REGRESSION/
 - **Rank-based Inverse Normal Transformation (RINT)**: Applied to make the data more suitable for regression analysis.
 - **Missing Value Handling**: Ensures data integrity by dealing with missing values appropriately.
 
-### Statistical Diagnostics
+### Assumption Testing
 - **Comprehensive Conditional Checking**
    -**Durbin-Watson test**: Checks for autocorrelation in the residuals.
    -**Shapiro-Wilk test**: Tests the normality of the data.
@@ -76,7 +76,7 @@ CARBON-EMISSION-REGRESSION/
 
 ### 1. Data Preprocessing
 ```python
-python src/preprocessing/run_diagnostics.py
+python src/preprocessing/run_assumption_testing.py
 python src/preprocessing/run_preprocess_analysis.py
 ```
 
@@ -112,16 +112,14 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 This project is licensed under the MIT License.
 
 ## Authors
-### Predicting Corporate Emissions in the Oil and Gas Sector: A Comparative Regression Model Analysis using Environmental, Financial, and Governance Indicators 
-
-Qiyan Maa,1, Haocheng Wangb,1, Zhen Xin Phuangc,d, Wai Lam Ngc,d, Xiongfeng Pane, Hua Shange, Kok Sin Woonc,d*
-- a School of Economics and Management, Xiamen University Malaysia, Jalan Sunsuria, Bandar Sunsuria, 43900 Sepang, Selangor, Malaysia
-- b School of Mathematics and Physics, Xiamen University Malaysia, Jalan Sunsuria, Bandar Sunsuria, 43900 Sepang, Selangor, Malaysia
-- c School of Energy and Chemical Engineering, Department of New Energy Science and Engineering, Xiamen University Malaysia, Jalan Sunsuria, Bandar Sunsuria, 43900 Sepang, Selangor, Malaysia
-- d Thrust of Carbon Neutrality and Climate Change, The Hong Kong University of Science and Technology (Guangzhou), Guangdong Province, 511455, China
-- e School of Economics and Management, Dalian University of Technology, Dalian, Liaoning Province, 116024, China. 
-*Corresponding author: koksinwoon@hkust-gz.edu.cn
-1 Qiyan Ma and Haocheng Wang contributed equally to this research
+Qiyan Ma<sup>a,1</sup>, Haocheng Wang<sup>b,1</sup>, Zhen Xin Phuang<sup>c,d</sup>, Wai Lam Ng<sup>c,d</sup>, Xiongfeng Pan<sup>e</sup>, Hua Shang<sup>e</sup>, Kok Sin Woon<sup>c,d,*</sup>  
+<sup>a</sup> School of Economics and Management, Xiamen University Malaysia, Jalan Sunsuria, Bandar Sunsuria, 43900 Sepang, Selangor, Malaysia  
+<sup>b</sup> School of Mathematics and Physics, Xiamen University Malaysia, Jalan Sunsuria, Bandar Sunsuria, 43900 Sepang, Selangor, Malaysia  
+<sup>c</sup> School of Energy and Chemical Engineering, Department of New Energy Science and Engineering, Xiamen University Malaysia, Jalan Sunsuria, Bandar Sunsuria, 43900 Sepang, Selangor, Malaysia  
+<sup>d</sup> Thrust of Carbon Neutrality and Climate Change, The Hong Kong University of Science and Technology (Guangzhou), Guangdong Province, 511455, China  
+<sup>e</sup> School of Economics and Management, Dalian University of Technology, Dalian, Liaoning Province, 116024, China  
+<sup>*</sup> Corresponding author: koksinwoon@hkust-gz.edu.cn  
+<sup>1</sup> Qiyan Ma and Haocheng Wang contributed equally to this research
 
 ## Citation
 
