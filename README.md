@@ -111,7 +111,12 @@ cd CARBON-EMISSION-REGRESSION
 pip install -r requirements.txt
 ```
 
-## Contributing
+## Contributing & Contributors
+
+<a href="https://github.com/hcWang942"><img src="https://github.com/hcWang942.png" width="40px" alt="hcWang942" /></a>
+
+**hcWang942** - *Project Maintainer* - [GitHub](https://github.com/hcWang942)
+
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
