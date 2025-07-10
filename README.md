@@ -1,5 +1,7 @@
 # Carbon Emission Regression Analysis
 
+![1961752170909_ pic_hd](https://github.com/user-attachments/assets/c98dd9c4-491d-452a-a8bd-8f54b88ded59)
+
 ## Overview
 This repository presents a comprehensive analysis framework aimed at exploring the relationship between Scope 1 carbon emissions and various socioeconomic indicators within the American Energy sector. Focusing on publicly-listed companies in the oil, gas, and energy sectors, the project utilizes statistical modeling techniques such as Multiple Linear Regression (MLR), Ridge Regression, and LASSO Regression to assess their environmental impact.
 
@@ -111,13 +113,11 @@ cd CARBON-EMISSION-REGRESSION
 pip install -r requirements.txt
 ```
 
-## Contributing & Contributors
-
-<a href="https://github.com/hcWang942"><img src="https://github.com/hcWang942.png" width="40px" alt="hcWang942" /></a>
+## Contributing & Contributors ![Contributors](https://img.shields.io/github/contributors/hcWang942/CarbonRegression)
 
 **hcWang942** - *Project Maintainer* - [GitHub](https://github.com/hcWang942)
 
-![Contributors](https://img.shields.io/github/contributors/hcWang942/CARBON-EMISSION-REGRESSION)
+
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
