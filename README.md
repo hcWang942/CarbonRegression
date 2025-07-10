@@ -11,7 +11,7 @@ CARBON-EMISSION-REGRESSION/
 │   ├── scope1_original.xlsx      # Raw collected data
 │   ├── scope1_cleaned.xlsx       # Cleaned data with handling of missing values
 │   ├── scope1_selected.xlsx      # Features with correlation ≥ 0.3 with Scope 1
-│   ├── scope1_regression_mlr.xlsx   # Dataset for MLR (passed conditional checks)
+│   ├── scope1_regression_mlr.xlsx   # Dataset for MLR (passed assumption tests)
 │   └── scope1_regression_LASSO_Ridge.xlsx   # Dataset for LASSO & Ridge regression
 │
 └── src/
@@ -36,7 +36,7 @@ CARBON-EMISSION-REGRESSION/
 - Features with a correlation coefficient of at least 0.3 with Scope 1 emissions are included. This selection is based on the correlation analysis performed in `preprocessing.py`.
 
 ### 3. Regression Datasets
-- `scope1_regression_mlr.xlsx`: Intended for Multiple Linear Regression. It has passed all the conditional checks and assumptions required for classical linear regression, with features carefully chosen through comprehensive diagnostic tests.
+- `scope1_regression_mlr.xlsx`: Intended for Multiple Linear Regression. It has passed all the assumption tests and assumptions required for classical linear regression, with features carefully chosen through comprehensive diagnostic tests.
 - `scope1_regression_LASSO_Ridge.xlsx`: Used for Penalized Regression (LASSO and Ridge). It includes a wider range of potential predictors and is suitable for regularization techniques that handle multicollinearity, especially when dealing with potential overfitting.
 
 ### Key Features
@@ -47,7 +47,7 @@ CARBON-EMISSION-REGRESSION/
   Ensures data integrity by dealing with missing values appropriately.  
 
 #### Assumption Testing  
-- **Comprehensive Conditional Checking**:  
+- **Comprehensive Assumption Testing**:  
   - **Durbin-Watson test**: Checks for autocorrelation in the residuals.  
   - **Shapiro-Wilk test**: Tests the normality of the data.  
   - **VIF analysis**: Assesses multicollinearity among the independent variables.  
@@ -134,7 +134,7 @@ If you use this code in your research, please cite:
 ```bibtex
 @article{article,
   title={Predicting Corporate Emissions in the Oil and Gas Sector: A Comparative Regression Model Analysis using Environmental, Financial, and Governance Indicators},
-  author={Qiyan Ma$^*$, Haocheng Wang$^*$, Zhen Xin Phuang, Wai Lam Ng, Xiongfeng Pan, Hua Shang, Kok Sin Woon},
+  author={Qiyan Ma*, Haocheng Wang*, Zhen Xin Phuang, Wai Lam Ng, Xiongfeng Pan, Hua Shang, Kok Sin Woon},
   journal={Energy Economics},
   year={2025}
 }
