@@ -1,6 +1,6 @@
 import pandas as pd
-from conditional_checking import RegressionDiagnostics
-from data_transform import transform_data
+from conditional_checking_functions import RegressionDiagnostics
+from data_transform_functions import transform_data
 import os
 from pathlib import Path
 

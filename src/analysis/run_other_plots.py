@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 
 PROJECT_ROOT = Path.cwd()
-RESULTS_DIR = os.path.join(PROJECT_ROOT, 'results')
+RESULTS_DIR = os.path.join(PROJECT_ROOT, 'src', 'analysis', 'results_other')
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 coef_data = {
@@ -138,7 +138,7 @@ plt.tight_layout()
 plt.savefig(os.path.join(RESULTS_DIR, 'model_metrics_comparison_percentage_clean.png'), dpi=300, bbox_inches='tight', facecolor='white')
 plt.close()
 
-print(f"Results ha s: {RESULTS_DIR}")
-print(f"生成的文件:")
-print(f"- side_by_side_comparison.png (特征系数对比)")
-print(f"- model_metrics_comparison_percentage_clean.png (模型性能指标对比)")
+print(f"Charts saved to: {RESULTS_DIR}")
+print(f"Generated files:")
+print(f"- side_by_side_comparison.png (Feature Coefficient Comparison)")
+print(f"- model_metrics_comparison_percentage_clean.png (Model Performance Metrics Comparison)")

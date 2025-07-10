@@ -8,7 +8,7 @@ from scipy.stats import shapiro
 from itertools import combinations
 import statsmodels.formula.api as smf
 from statsmodels.graphics.regressionplots import plot_partregress_grid
-from data_transform import transform_data
+from data_transform_functions import transform_data
 import os
 from pathlib import Path
 
