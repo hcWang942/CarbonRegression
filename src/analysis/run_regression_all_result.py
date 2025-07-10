@@ -31,10 +31,8 @@ def print_results(model_name, metrics, coefficients, best_alpha=None):
     result_str += "\n=== Model Parameters ===\n"
     result_str += tabulate(params_table, headers=["Feature", "Coefficient"], tablefmt="pretty")
     
-    # Add accuracy metrics to the output
     metrics_table = []
     for metric, value in metrics.items():
-        # Format accuracy metrics differently for better readability
         if metric.startswith('accuracy_within_'):
             metrics_table.append([metric, f"{value:.2f}%"])
         else:
@@ -57,22 +55,17 @@ def save_results(results_str, filename):
         f.write(results_str)
 
 def main():
-    # Create directories for results and plots
     os.makedirs(RESULTS_DIR, exist_ok=True)
     os.makedirs(PLOTS_DIR, exist_ok=True)
     
-    # Create a single comprehensive results file
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     comprehensive_results_file = os.path.join(RESULTS_DIR, f'comprehensive_results_{timestamp}.txt')
     
     with open(comprehensive_results_file, 'w') as comprehensive_file:
-        # Add header with timestamp
         comprehensive_file.write(f"=====================================================\n")
         comprehensive_file.write(f"  COMPREHENSIVE REGRESSION ANALYSIS RESULTS\n")
         comprehensive_file.write(f"  Generated on: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         comprehensive_file.write(f"=====================================================\n\n")
-        
-        # Linear Regression on first dataset
         section_header = "\n" + "="*50 + "\n" + "LINEAR REGRESSION RESULTS" + "\n" + "="*50 + "\n"
         print(section_header)
         comprehensive_file.write(section_header)
@@ -85,14 +78,11 @@ def main():
         comprehensive_file.write(f"Number of samples: {len(df_mlr)}\n\n")
         
         models_mlr = RegressionModels(df_mlr, target_col)
-        
-        # Run with visualization enabled, saving to the plots directory
         model, y_pred, metrics, coefficients = models_mlr.fit_linear(visualize=True, save_dir=PLOTS_DIR)
         mlr_results = print_results("Linear", metrics, coefficients)
         save_results(mlr_results, 'mlr_results.txt')
         comprehensive_file.write(mlr_results + "\n")
         
-        # Penalized Regressions on second dataset
         section_header = "\n" + "="*50 + "\n" + "RIDGE REGRESSION RESULTS" + "\n" + "="*50 + "\n"
         print(section_header)
         comprehensive_file.write(section_header)
@@ -105,14 +95,11 @@ def main():
         comprehensive_file.write(f"Number of samples: {len(df_penalized)}\n\n")
         
         models_penalized = RegressionModels(df_penalized, target_col)
-        
-        # Run Ridge regression with visualization
         best_alpha, model, y_pred, metrics, coefficients = models_penalized.fit_ridge(visualize=True, save_dir=PLOTS_DIR)
         ridge_results = print_results("Ridge", metrics, coefficients, best_alpha)
         save_results(ridge_results, 'ridge_results.txt')
         comprehensive_file.write(ridge_results + "\n")
         
-        # Run Lasso regression with visualization
         section_header = "\n" + "="*50 + "\n" + "LASSO REGRESSION RESULTS" + "\n" + "="*50 + "\n"
         print(section_header)
         comprehensive_file.write(section_header)
@@ -122,12 +109,10 @@ def main():
         save_results(lasso_results, 'lasso_results.txt')
         comprehensive_file.write(lasso_results + "\n")
         
-        # Generate comparative visualizations
         section_header = "\n" + "="*50 + "\n" + "MODEL COMPARISON" + "\n" + "="*50 + "\n"
         print(section_header)
         comprehensive_file.write(section_header)
-        
-        # Add note about comparison plots to the comprehensive file
+
         comprehensive_file.write("Comparison plots have been generated in the 'plots' directory:\n")
         comprehensive_file.write("- Model accuracy comparisons\n")
         comprehensive_file.write("- R² and adjusted R² comparisons\n")
@@ -137,18 +122,12 @@ def main():
         models_compared = models_penalized.compare_models(save_dir=PLOTS_DIR)
         print(f"Comparison plots saved to: {PLOTS_DIR}")
         
-        # Add summary of all models
         summary_header = "\n" + "="*50 + "\n" + "SUMMARY OF ALL MODELS" + "\n" + "="*50 + "\n"
         comprehensive_file.write(summary_header)
-        
-        # Create a comparison table of key metrics for all models
         summary_table = []
-        
-        # Headers for the summary table
         summary_table.append(["Model", "Best Alpha", "R²", "Adj. R²", "RMSE", "Accuracy (±20%)", "Accuracy (±40%)"])
-        
-        # Linear regression row
-        linear_metrics = metrics  # The metrics from the last run of fit_linear
+
+        linear_metrics = metrics 
         summary_table.append([
             "Linear", 
             "N/A", 
@@ -159,8 +138,7 @@ def main():
             f"{linear_metrics['accuracy_within_40%']:.2f}%"
         ])
         
-        # Ridge regression row
-        ridge_metrics = models_compared["Ridge"]["results"][2]  # metrics is at index 2
+        ridge_metrics = models_compared["Ridge"]["results"][2] 
         summary_table.append([
             "Ridge", 
             f"{models_compared['Ridge']['alpha']:.4f}", 
@@ -171,8 +149,7 @@ def main():
             f"{ridge_metrics['accuracy_within_40%']:.2f}%"
         ])
         
-        # Lasso regression row
-        lasso_metrics = models_compared["Lasso"]["results"][2]  # metrics is at index 2
+        lasso_metrics = models_compared["Lasso"]["results"][2] 
         summary_table.append([
             "Lasso", 
             f"{models_compared['Lasso']['alpha']:.4f}", 
@@ -186,20 +163,16 @@ def main():
         comprehensive_file.write(tabulate(summary_table, headers="firstrow", tablefmt="pretty"))
         comprehensive_file.write("\n\n")
         
-        # Add conclusion
         comprehensive_file.write("\nCONCLUSION:\n")
         
-        # Find best model based on adjusted R²
         best_model_adj_r2 = max(["Linear", "Ridge", "Lasso"], 
                                 key=lambda m: models_compared.get(m, {}).get("results", [None, None, {}])[2].get("adj_r2", 0) 
                                 if m != "Linear" else linear_metrics.get("adj_r2", 0))
         
-        # Find best model based on RMSE
         best_model_rmse = min(["Linear", "Ridge", "Lasso"], 
                              key=lambda m: models_compared.get(m, {}).get("results", [None, None, {}])[2].get("rmse", float('inf')) 
                              if m != "Linear" else linear_metrics.get("rmse", float('inf')))
         
-        # Find best model based on accuracy within 20%
         best_model_acc20 = max(["Linear", "Ridge", "Lasso"], 
                               key=lambda m: models_compared.get(m, {}).get("results", [None, None, {}])[2].get("accuracy_within_20%", 0) 
                               if m != "Linear" else linear_metrics.get("accuracy_within_20%", 0))
@@ -209,7 +182,6 @@ def main():
         comprehensive_file.write(f"- Best model based on accuracy within ±20%: {best_model_acc20}\n\n")
         
         comprehensive_file.write("Overall recommendation: ")
-        # Determine overall best model (simple majority vote)
         models_count = {"Linear": 0, "Ridge": 0, "Lasso": 0}
         models_count[best_model_adj_r2] += 1
         models_count[best_model_rmse] += 1

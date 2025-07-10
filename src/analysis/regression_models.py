@@ -8,32 +8,18 @@ from sklearn.linear_model import LinearRegression, RidgeCV, Ridge, LassoCV, Lass
 from sklearn.metrics import mean_squared_error, r2_score
 
 def adjusted_r2(r2, n, p):
-    """Calculate adjusted R-squared """
     return 1 - (1 - r2) * (n - 1) / (n - p - 1)
 
 def calculate_accuracy_thresholds(y_true, y_pred, thresholds=[0.2, 0.4]):
-    """Calculate percentage of predictions within given error thresholds
-    
-    Args:
-        y_true: Array of actual values
-        y_pred: Array of predicted values
-        thresholds: List of error thresholds (e.g., [0.2, 0.4] for 20% and 40%)
-        
-    Returns:
-        Dictionary with accuracy percentages for each threshold
-    """
     accuracy_dict = {}
     for threshold in thresholds:
-        # Calculate relative error
         rel_error = np.abs(y_true - y_pred) / np.abs(y_true)
-        # Count predictions within threshold
         within_threshold = np.mean(rel_error <= threshold) * 100
         accuracy_dict[f'accuracy_within_{int(threshold*100)}%'] = within_threshold
     
     return accuracy_dict
 
 def evaluate_model(model, X_train, X_test, y_train, y_test, model_name):
-    """Evaluate regression model with comprehensive metrics"""
     X_train_array = X_train.values if isinstance(X_train, pd.DataFrame) else X_train
     X_test_array = X_test.values if isinstance(X_test, pd.DataFrame) else X_test
     y_train_array = y_train.values if isinstance(y_train, pd.Series) else y_train
@@ -65,43 +51,28 @@ def evaluate_model(model, X_train, X_test, y_train, y_test, model_name):
     return model, y_test_pred, metrics, coefficients
 
 def plot_predictions(y_true, y_pred, model_name, save_path=None):
-    """Plot actual vs predicted values with error bounds
-    
-    Args:
-        y_true: Array of actual values
-        y_pred: Array of predicted values
-        model_name: Name of the model for the plot title
-        save_path: Path to save the figure, if None, the plot is displayed
-    """
     plt.figure(figsize=(10, 8))
     
-    # Create scatter plot
     plt.scatter(y_true, y_pred, alpha=0.6, color='blue')
     
-    # Add perfect prediction line
     min_val = min(np.min(y_true), np.min(y_pred))
     max_val = max(np.max(y_true), np.max(y_pred))
     plt.plot([min_val, max_val], [min_val, max_val], 'r--', label='Perfect Prediction')
     
-    # Add ±20% error bounds
     plt.plot([min_val, max_val], [min_val*0.8, max_val*0.8], 'g:', label='-20% Error Bound')
     plt.plot([min_val, max_val], [min_val*1.2, max_val*1.2], 'g:', label='+20% Error Bound')
     
-    # Add ±40% error bounds
     plt.plot([min_val, max_val], [min_val*0.6, max_val*0.6], 'y:', label='-40% Error Bound')
     plt.plot([min_val, max_val], [min_val*1.4, max_val*1.4], 'y:', label='+40% Error Bound')
     
-    # Calculate accuracy metrics for display
     accuracy_20 = np.mean(np.abs(y_true - y_pred) / np.abs(y_true) <= 0.2) * 100
     accuracy_40 = np.mean(np.abs(y_true - y_pred) / np.abs(y_true) <= 0.4) * 100
     
-    # Customize the plot
     plt.title(f"{model_name} Regression: Actual vs Predicted Values", fontsize=14)
     plt.xlabel("Actual Values", fontsize=12)
     plt.ylabel("Predicted Values", fontsize=12)
     plt.grid(True, alpha=0.3)
     
-    # Add accuracy text
     text_info = (
         f"Accuracy (within ±20%): {accuracy_20:.1f}%\n"
         f"Accuracy (within ±40%): {accuracy_40:.1f}%"
@@ -111,7 +82,6 @@ def plot_predictions(y_true, y_pred, model_name, save_path=None):
                  bbox=dict(boxstyle="round,pad=0.5", fc="white", ec="gray", alpha=0.8),
                  fontsize=10, ha='left', va='top')
     
-    # Handle duplicated labels in the legend
     handles, labels = plt.gca().get_legend_handles_labels()
     by_label = dict(zip(labels, handles))
     plt.legend(by_label.values(), by_label.keys(), loc='lower right')
@@ -125,39 +95,24 @@ def plot_predictions(y_true, y_pred, model_name, save_path=None):
         plt.show()
 
 def plot_feature_importance(coefficients, model_name, top_n=None, save_path=None):
-    """Visualize feature importance based on absolute coefficient values
-    
-    Args:
-        coefficients: Dictionary of model coefficients
-        model_name: Name of the model for the plot title
-        top_n: Number of top features to display (None for all)
-        save_path: Path to save the figure, if None, the plot is displayed
-    """
-    # Extract coefficients
     coefs = coefficients['coefficients']
     feature_names = list(coefs.keys())
     importance = np.abs(list(coefs.values()))
     
-    # Create DataFrame for sorting
     df_importance = pd.DataFrame({'Feature': feature_names, 'Importance': importance})
     df_importance = df_importance.sort_values('Importance', ascending=False)
     
-    # Select top N features if specified
     if top_n is not None and top_n < len(df_importance):
         df_importance = df_importance.iloc[:top_n]
     
-    # Plot
     plt.figure(figsize=(10, max(6, len(df_importance) * 0.3)))
     sns.set_style("whitegrid")
     
     ax = sns.barplot(x='Importance', y='Feature', data=df_importance, palette='viridis')
     
-    # Customize plot
     plt.title(f"Feature Importance - {model_name} Regression", fontsize=14)
     plt.xlabel('Absolute Coefficient Value', fontsize=12)
     plt.ylabel('Feature', fontsize=12)
-    
-    # Add values to the bars
     for i, importance in enumerate(df_importance['Importance']):
         ax.text(importance + 0.01, i, f"{importance:.4f}", va='center')
     
@@ -171,14 +126,6 @@ def plot_feature_importance(coefficients, model_name, top_n=None, save_path=None
 
 class RegressionModels:
     def __init__(self, data, target_col, test_size=0.4, random_state=42):
-        """Initialize regression models with data preprocessing
-        
-        Args:
-            data: DataFrame containing features and target
-            target_col: Name of the target column
-            test_size: Fraction of data to use for testing
-            random_state: Random seed for reproducibility
-        """
         self.Y = data[target_col]
         self.X = data.drop(columns=[target_col])
         self.target_col = target_col
@@ -186,7 +133,6 @@ class RegressionModels:
         self.prepare_data(test_size, random_state)
         
     def prepare_data(self, test_size, random_state):
-        """Split and scale the data"""
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
             self.X, self.Y, test_size=test_size, random_state=random_state
         )
@@ -200,15 +146,6 @@ class RegressionModels:
         )
     
     def fit_linear(self, visualize=True, save_dir=None):
-        """Fit linear regression model and evaluate
-        
-        Args:
-            visualize: Whether to create visualizations
-            save_dir: Directory to save visualizations, if None, displays plots
-            
-        Returns:
-            Tuple of (model, predictions, metrics, coefficients)
-        """
         model = LinearRegression()
         model.fit(self.X_train_scaled.values, self.y_train.values)
         
@@ -227,16 +164,6 @@ class RegressionModels:
         return results
     
     def fit_ridge(self, alphas=np.logspace(-3, 3, 100), visualize=True, save_dir=None):
-        """Fit Ridge regression model with cross-validation
-        
-        Args:
-            alphas: Array of alpha values for cross-validation
-            visualize: Whether to create visualizations
-            save_dir: Directory to save visualizations, if None, displays plots
-            
-        Returns:
-            Tuple of (best_alpha, model, predictions, metrics, coefficients)
-        """
         ridge_cv = RidgeCV(alphas=alphas, cv=5)
         ridge_cv.fit(self.X_train_scaled.values, self.y_train.values)
         
@@ -258,16 +185,6 @@ class RegressionModels:
         return ridge_cv.alpha_, *results
     
     def fit_lasso(self, alphas=np.logspace(-3, 3, 100), visualize=True, save_dir=None):
-        """Fit Lasso regression model with cross-validation
-        
-        Args:
-            alphas: Array of alpha values for cross-validation
-            visualize: Whether to create visualizations
-            save_dir: Directory to save visualizations, if None, displays plots
-            
-        Returns:
-            Tuple of (best_alpha, model, predictions, metrics, coefficients)
-        """
         lasso_cv = LassoCV(alphas=alphas, cv=5, random_state=42)
         lasso_cv.fit(self.X_train_scaled.values, self.y_train.values)
         
@@ -289,33 +206,22 @@ class RegressionModels:
         return lasso_cv.alpha_, *results
         
     def compare_models(self, save_dir=None):
-        """Compare all regression models and visualize results
-        
-        Args:
-            save_dir: Directory to save comparison visualizations
-            
-        Returns:
-            Dictionary with results from all models
-        """
-        # Fit all models
         linear_results = self.fit_linear(visualize=False)
         ridge_alpha, *ridge_results = self.fit_ridge(visualize=False)
         lasso_alpha, *lasso_results = self.fit_lasso(visualize=False)
         
-        # Extract metrics
         models = {
             'Linear': {'results': linear_results, 'alpha': None},
             'Ridge': {'results': ridge_results, 'alpha': ridge_alpha},
             'Lasso': {'results': lasso_results, 'alpha': lasso_alpha}
         }
         
-        # Compare metrics in a bar chart
         metrics_to_compare = ['test_r2', 'adj_r2', 'rmse', 'mae', 
                              'accuracy_within_20%', 'accuracy_within_40%']
         
         metrics_data = []
         for model_name, model_info in models.items():
-            model_metrics = model_info['results'][2]  # metrics is at index 2
+            model_metrics = model_info['results'][2]
             for metric in metrics_to_compare:
                 metrics_data.append({
                     'Model': model_name,
@@ -325,7 +231,6 @@ class RegressionModels:
         
         df_metrics = pd.DataFrame(metrics_data)
         
-        # Separate plots for different metric types
         for metric_group, ylabel in [
             (['test_r2', 'adj_r2'], 'R² Value'),
             (['rmse', 'mae'], 'Error Value'),
@@ -340,7 +245,6 @@ class RegressionModels:
             plt.xlabel('Model', fontsize=12)
             plt.ylabel(ylabel, fontsize=12)
             
-            # Add value labels on bars
             for container in ax.containers:
                 ax.bar_label(container, fmt='%.2f', fontsize=9)
             
@@ -353,32 +257,26 @@ class RegressionModels:
             else:
                 plt.show()
         
-        # Create a combined plot of actual vs predicted for all models
         plt.figure(figsize=(15, 6))
         
         for i, (model_name, model_info) in enumerate(models.items(), 1):
             plt.subplot(1, 3, i)
-            y_pred = model_info['results'][1]  # predictions at index 1
+            y_pred = model_info['results'][1]
             
-            # Calculate accuracy metrics
             accuracy_20 = np.mean(np.abs(self.y_test - y_pred) / np.abs(self.y_test) <= 0.2) * 100
             accuracy_40 = np.mean(np.abs(self.y_test - y_pred) / np.abs(self.y_test) <= 0.4) * 100
             
-            # Create scatter plot
             plt.scatter(self.y_test, y_pred, alpha=0.6)
             
-            # Add perfect prediction line
             min_val = min(self.y_test.min(), y_pred.min())
             max_val = max(self.y_test.max(), y_pred.max())
             plt.plot([min_val, max_val], [min_val, max_val], 'r--')
             
-            # Customize subplot
             alpha_text = f", α={model_info['alpha']:.4f}" if model_info['alpha'] else ""
             plt.title(f"{model_name}{alpha_text}", fontsize=12)
             plt.xlabel("Actual", fontsize=10)
             plt.ylabel("Predicted", fontsize=10)
             
-            # Add accuracy text
             text_info = (
                 f"±20%: {accuracy_20:.1f}%\n"
                 f"±40%: {accuracy_40:.1f}%"

@@ -10,13 +10,10 @@ from pathlib import Path
 from data_transform_functions import transform_data
 warnings.filterwarnings('ignore')
 
-# 统一设置结果目录
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 DATA_DIR = os.path.join(PROJECT_ROOT, 'data')
 RESULTS_DIR = os.path.join(PROJECT_ROOT, 'src', 'preprocessing', 'preprocessing_results')
 
-
-# 相关性分析类
 class CorrelationAnalyzer:
     def __init__(self, data, threshold=0.3):
         self.data = data
@@ -117,8 +114,6 @@ class CorrelationAnalyzer:
                 else:
                     print(f"{key}: {value:.4f}")
 
-
-# 分布统计计算函数
 def calculate_distribution_stats(data, var_name):
     clean_data = data.dropna()
     
@@ -148,11 +143,8 @@ def calculate_distribution_stats(data, var_name):
         'JB_p': jb_p
     }
 
-
-# 主函数
 def main():
     os.makedirs(RESULTS_DIR, exist_ok=True)
-    
     file_path = os.path.join(DATA_DIR, 'scope1_cleaned.xlsx')
     original_df = pd.read_excel(file_path)
     df_transformed = transform_data(original_df)
@@ -162,7 +154,6 @@ def main():
     print("\nFirst few rows after transformation:")
     print(df_transformed.head())
     
-    # 相关性分析
     print("\n" + "="*80)
     print("STARTING CORRELATION ANALYSIS")
     print("="*80)
@@ -181,8 +172,6 @@ def main():
     for var in significant_vars[1:]: 
         correlation = corr_analyzer.corr_matrix.iloc[0][var]
         print(f"- {var}: {correlation:.3f}")
-    
-    # 分布分析
     print("\n" + "="*80)
     print("STARTING DISTRIBUTION ANALYSIS")
     print("="*80)

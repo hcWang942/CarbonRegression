@@ -28,27 +28,61 @@ CARBON-EMISSION-REGRESSION/
         └── run_preprocess_analysis.py  # Script for preprocessing and correlation analysis
 ```
 
-## Data Processing Pipeline
+### General Pipeline for Carbon Emission Regression Analysis
 
-### 1. Data Cleaning (`scope1_cleaned.xlsx`)
-- Rows with missing data are removed.
-- Special handling for `NumberOfBoardMeetings`: Rows with missing values only in this column are retained because its correlation with Scope 1 is below 0.3.
+#### I. Data Processing
+This stage focuses on cleaning the raw data, selecting relevant features, and preparing datasets suitable for regression analysis.
 
-### 2. Feature Selection (`scope1_selected.xlsx`)
-- Features with a correlation coefficient of at least 0.3 with Scope 1 emissions are included. This selection is based on the correlation analysis performed in `preprocessing.py`.
+1. **Data Cleaning**
+    - **Input**: `scope1_original.xlsx` (raw collected data)
+    - **Steps**:
+        - Remove rows with missing data from the dataset.
+        - Implement special handling for the `NumberOfBoardMeetings` column. Retain rows with missing values only in this column since its correlation with Scope 1 emissions is below 0.3.
+        - The cleaning process is carried out using functions in `src/preprocessing/data_transform.py`. For example, the `clean_data` function can remove the first row, replace '-' with `NaN`, convert data to numeric, and fill missing values with the mean.
 
-### 3. Regression Datasets
-- `scope1_regression_mlr.xlsx`: Intended for Multiple Linear Regression. It has passed all the assumption tests and assumptions required for classical linear regression, with features carefully chosen through comprehensive diagnostic tests.
-- `scope1_regression_LASSO_Ridge.xlsx`: Used for Penalized Regression (LASSO and Ridge). It includes a wider range of potential predictors and is suitable for regularization techniques that handle multicollinearity, especially when dealing with potential overfitting.
+2. **Feature Selection**
+    - **Input**: `scope1_cleaned.xlsx`
+    - **Steps**:
+        - Conduct a correlation analysis between each feature and Scope 1 emissions. This analysis is performed in `src/preprocessing/preprocessing.py`.
+        - Select features with a correlation coefficient of at least 0.3 with Scope 1 emissions. These selected features are more likely to have a significant impact on the target variable and will be used in the subsequent regression analysis.
 
-### Key Features
-#### Data Transformation  
-- **Rank-based Inverse Normal Transformation (RINT)**:  
-  Applied to make the data more suitable for regression analysis.  
-- **Missing Value Handling**:  
-  Ensures data integrity by dealing with missing values appropriately.  
+#### II. Regression Analysis
+This stage involves preparing datasets for different regression models, running the models, and evaluating their performance.
 
-#### Assumption Testing  
+1. **Dataset Preparation for Regression**
+    - **Multiple Linear Regression (MLR)**
+        - **Input**: `scope1_selected.xlsx`
+        - **Steps**:
+            - Apply conditional checks and assumption tests for classical linear regression on the `scope1_selected.xlsx` dataset. These tests include checking for autocorrelation (e.g., Durbin - Watson test), normality (e.g., Shapiro - Wilk test), multicollinearity (e.g., VIF analysis), homoscedasticity (e.g., Levene's test), and linearity (e.g., partial regression plots). The tests are implemented in `src/preprocessing/conditional_checking.py`.
+            - Based on the results of the diagnostic tests, carefully select features that meet the requirements of classical linear regression. The resulting dataset `scope1_regression_mlr.xlsx` is then used for MLR.
+
+    - **Penalized Regression (LASSO and Ridge)**
+        - **Input**: `scope1_selected.xlsx`
+        - **Steps**:
+            - Include a wider range of potential predictors from the `scope1_selected.xlsx` dataset to form the `scope1_regression_LASSO_Ridge.xlsx` dataset.
+            - This dataset is suitable for regularization techniques like LASSO and Ridge regression, which can handle multicollinearity and prevent overfitting.
+
+2. **Running Regression Models**
+    - **Multiple Linear Regression (MLR)**
+        - **Input**: `scope1_regression_mlr.xlsx`
+        - **Steps**:
+            - Use the `RegressionModels` class in `src/analysis/regression_models.py` to fit a linear regression model on the `scope1_regression_mlr.xlsx` dataset.
+            - Evaluate the model using metrics such as adjusted R - squared, mean squared error (MSE), root mean squared error (RMSE), mean absolute error (MAE), and accuracy within certain error thresholds.
+            - Optionally, visualize the model results, such as actual vs predicted values and feature importance.
+
+    - **Penalized Regression (LASSO and Ridge)**
+        - **Input**: `scope1_regression_LASSO_Ridge.xlsx`
+        - **Steps**:
+            - Fit Ridge and LASSO regression models using cross - validation to select the best alpha value. This is also implemented in the `RegressionModels` class in `src/analysis/regression_models.py`.
+            - Evaluate the models using the same set of metrics as in MLR.
+            - Compare the performance of different regression models (MLR, Ridge, and LASSO) and select the best model based on criteria such as adjusted R - squared, RMSE, and accuracy within a certain error range.
+
+## Key Features
+### Data Transformation  
+- **Rank-based Inverse Normal Transformation (RINT)**:  Applied to make the data more suitable for regression analysis.  
+- **Missing Value Handling**:  Ensures data integrity by dealing with missing values appropriately.  
+
+### Assumption Testing  
 - **Comprehensive Assumption Testing**:  
   - **Durbin-Watson test**: Checks for autocorrelation in the residuals.  
   - **Shapiro-Wilk test**: Tests the normality of the data.  
@@ -58,7 +92,7 @@ CARBON-EMISSION-REGRESSION/
   - **Box plots and statistical tests**: Detect outliers in the data.  
   - **Partial regression plots**: Examine the linearity between variables.  
 
-#### Regression Analysis  
+### Regression Analysis  
 - **Correlation analysis**: Filters features based on a correlation threshold.  
 - **Cross-validation**: Validates the performance of the regression models.  
 - **Model comparison metrics**:  
@@ -67,18 +101,15 @@ CARBON-EMISSION-REGRESSION/
   - **Root Mean Squared Error (RMSE)**: The square root of the MSE, providing a measure of the average magnitude of the error.  
   - **Mean Absolute Error (MAE)**: Measures the average magnitude of the errors in a set of predictions.  
 
-#### Advanced Model Selection  
+### Advanced Model Selection  
 - **Stepwise variable selection**: Automatically selects the most relevant variables for the model.  
 - **Cross-validated alpha selection for Ridge and LASSO**: Chooses the optimal regularization parameter.  
 - **Feature importance analysis through coefficient paths**: Identifies the relative importance of each feature in the model.  
 
-#### Regression Models  
-- **Multiple Linear Regression (MLR)**:  
-  A basic linear model that predicts the relationship between a dependent variable and multiple independent variables.  
-- **Ridge Regression with cross-validation**:  
-  A regularized regression method that helps to reduce the impact of multicollinearity.  
-- **LASSO Regression with cross-validation**:  
-  Another regularized regression method that can perform feature selection by shrinking some coefficients to zero.  
+### Regression Models  
+- **Multiple Linear Regression (MLR)**:  A basic linear model that predicts the relationship between a dependent variable and multiple independent variables.  
+- **Ridge Regression with cross-validation**:   A regularized regression method that helps to reduce the impact of multicollinearity.  
+- **LASSO Regression with cross-validation**:  Another regularized regression method that can perform feature selection by shrinking some coefficients to zero.  
 
 ## Usage
 
