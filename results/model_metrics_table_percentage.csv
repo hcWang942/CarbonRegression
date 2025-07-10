@@ -1,6 +1,0 @@
-Metric,Linear Regression,LASSO Regression (α=0.0498),Ridge Regression (α=15.1991),Best Model
-test_r2,36.9%,39.0%,38.9%,LASSO Regression
-test_mse,72.6%,70.1%,70.2%,LASSO Regression
-rmse,85.2%,83.7%,83.8%,LASSO Regression
-mae,65.5%,64.1%,64.2%,LASSO Regression
-adj_r2,28.5%,29.1%,27.1%,LASSO Regression
