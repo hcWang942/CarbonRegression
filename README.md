@@ -117,6 +117,8 @@ pip install -r requirements.txt
 
 **hcWang942** - *Project Maintainer* - [GitHub](https://github.com/hcWang942)
 
+![Contributors](https://img.shields.io/github/contributors/hcWang942/CARBON-EMISSION-REGRESSION)
+
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
