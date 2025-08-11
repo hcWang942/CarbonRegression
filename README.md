@@ -165,15 +165,3 @@ This project is licensed under the MIT License.
 <sup>*</sup> Corresponding author: koksinwoon@hkust-gz.edu.cn  
 <sup>1</sup> Qiyan Ma and Haocheng Wang contributed equally to this research
 
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@article{article,
-  title={Predicting Corporate Emissions in the Oil and Gas Sector: A Comparative Regression Model Analysis using Environmental, Financial, and Governance Indicators},
-  author={Qiyan Ma*, Haocheng Wang*, Zhen Xin Phuang, Wai Lam Ng, Xiongfeng Pan, Hua Shang, Kok Sin Woon},
-  journal={Energy Economics},
-  year={2025}
-}
-```
